@@ -58,6 +58,7 @@
           - libraspberrypi-doc
           - libraspberrypi-bin
         install:
+          - python3.7
           - rsync
           - vim
           - screen
