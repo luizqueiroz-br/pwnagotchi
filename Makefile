@@ -1,6 +1,6 @@
 PACKER_VERSION=1.7.2
 PWN_HOSTNAME=pwnagotchi
-PWN_VERSION=master
+PWN_VERSION=1.6.0
 
 all: clean install image
 
@@ -19,8 +19,8 @@ install:
         sudo cp /tmp/packer-plugin-arm-image/packer-plugin-arm-image /usr/bin
 
 image:
-        cd builder && sudo /usr/bin/packer build -var "pwn_hostname=pwnagotchi" -var "pwn_version=master" pwnagotchi.json
-        sudo mv builder/output-pwnagotchi/image pwnagotchi-raspberrypi-os-lite-master.img
+        cd builder && sudo /usr/bin/packer build -var "pwn_hostname=pwnagotchi" -var "pwn_version=$(PWN_VERSION)" pwnagotchi.json
+        sudo mv builder/output-pwnagotchi/image pwnagotchi-raspberrypi-os-lite-$(PWN_VERSION).img
         sudo sha256sum pwnagotchi-raspberrypi-os-lite-$(PWN_VERSION).img > pwnagotchi-raspberrypi-os-lite-$(PWN_VERSION).sha256
         sudo zip pwnagotchi-raspberrypi-os-lite-$(PWN_VERSION).zip pwnagotchi-raspberrypi-os-lite-master.sha256 pwnagotchi-raspberrypi-os-lite-$(P>
 
