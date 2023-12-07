@@ -113,8 +113,7 @@
 
   tasks:
   - name: change hostname
-    hostname:
-      name: "{{pwnagotchi.hostname}}"
+    command: hostnamectl set-hostname "{{ pwnagotchi.hostname }}"
     when: lookup('file', '/etc/hostname') == "raspberrypi"
     register: hostname
 
